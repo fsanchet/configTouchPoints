@@ -4,7 +4,7 @@ darwin:
     description: touchpoints gateway
     channels:
       default-channel: local#Only applies to web gateway
-name: touchpointsGateway
+    name: touchpointsGateway
     propagate-headers: true
     global-error: true
     exception-response: true
