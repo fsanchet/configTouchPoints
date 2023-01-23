@@ -1,54 +1,106 @@
+darwin:
+  app-key: touchpoints
+  gateway:
+    description: touchpoints gateway
+    channels:
+      default-channel: local#Only applies to web gateway
+name: touchpointsGateway
+    propagate-headers: true
+    global-error: true
+    exception-response: true
+    show-detailed-message: true
+  security:
+    enabled: false
+    wiretap: false
+    white-list: /**
+  logging:
+    system: atlas_system
+    subsystem: atlas_subsystem
+    application: atlas_app
+    subapplication: atlas_sub_app
 
-
-filters:
-- PrefixPath=/api
-- AddRequestHeader=apiKey,touch1
-- id: investment
-uri: http://localhost:8092
-predicates:
-- Path=/investment/**
-filters:
-- PrefixPath=/api
-- AddRequestHeader=apiKey,touch1
-- id: manager
-uri: http://localhost:8093
-predicates:
-- Path=/manager/**
-filters:
-- PrefixPath=/api
-- AddRequestHeader=apiKey,touch1
-- id: movements
-uri: http://localhost:8094
-predicates:
-- Path=/movements/**
-filters:
-- PrefixPath=/api
-- AddRequestHeader=apiKey,touch1
-- id: quicklinks
-uri: http://localhost:8095
-predicates:
-- Path=/quicklinks/**
-filters:
-- PrefixPath=/api
-- AddRequestHeader=apiKey,touch1
-- id: summary
-uri: http://localhost:8096
-predicates:
-- Path=/summary/**
-filters:
-- PrefixPath=/api
-- AddRequestHeader=apiKey,touch1
-management:
-health:
-probes:
-enabled: true
-server:
-port: 8079
-endpoint:
-gateway:
-enabled: true
-endpoints:
-web:
-exposure:
-enabled: true
-include: refresh,health,info,readinessstate,livenessstate,gateway
+spring:
+  security:
+    user:
+      name: darwin
+      password: 123456
+  cloud:
+    gateway:
+# If you want to enable CORS, just uncomment these lines
+      #      globalcors:
+      #        corsConfigurations:
+      #          '[/**]':
+      #            allowedOrigins: ${env.cors-origins}
+      #            allowedHeaders: "*"
+      #            allowedMethods:
+      #              - GET
+      #              - POST
+      #              - OPTIONS
+      #              - PUT
+      #            exposedHeaders: Cache-Control, Content-Language, Content-type, Expires, Last-Modified
+      #            allowCredentials: true
+      #            maxAge: 3600
+routes:
+        - id: accounts
+          uri: http://localhost:8090
+          predicates:
+            - Path=/accounts/**
+          filters:
+            - PrefixPath=/api
+            - AddRequestHeader=apiKey,touch1
+        - id: campaign
+          uri: http://localhost:8091
+          predicates:
+            - Path=/campaign/**
+          filters:
+            - PrefixPath=/api
+            - AddRequestHeader=apiKey,touch1
+        - id: investment
+          uri: http://localhost:8092
+          predicates:
+            - Path=/investment/**
+          filters:
+            - PrefixPath=/api
+            - AddRequestHeader=apiKey,touch1
+        - id: manager
+          uri: http://localhost:8093
+          predicates:
+            - Path=/manager/**
+          filters:
+            - PrefixPath=/api
+            - AddRequestHeader=apiKey,touch1
+        - id: movements
+          uri: http://localhost:8094
+          predicates:
+            - Path=/movements/**
+          filters:
+            - PrefixPath=/api
+            - AddRequestHeader=apiKey,touch1
+        - id: quicklinks
+          uri: http://localhost:8095
+          predicates:
+            - Path=/quicklinks/**
+          filters:
+            - PrefixPath=/api
+            - AddRequestHeader=apiKey,touch1
+        - id: summary
+          uri: http://localhost:8096
+          predicates:
+            - Path=/summary/**
+          filters:
+            - PrefixPath=/api
+            - AddRequestHeader=apiKey,touch1
+#management:
+#  health:
+#    probes:
+#      enabled: true
+#  server:
+#    port: 8079
+#  endpoint:
+#    gateway:
+#      enabled: true
+#  endpoints:
+#    web:
+#      exposure:
+#        enabled: true
+#        include: refresh,health,info,readinessstate,livenessstate,gateway
