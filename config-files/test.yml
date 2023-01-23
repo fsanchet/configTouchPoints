@@ -1,0 +1,20 @@
+darwin:
+  app-key: touchpoints
+  gateway:
+    description: touchpoints gateway
+    channels:
+      default-channel: local#Only applies to web gateway
+    name: touchpointsGateway
+    propagate-headers: true
+    global-error: true
+    exception-response: true
+    show-detailed-message: true
+  security:
+    enabled: false
+    wiretap: false
+    white-list: /**
+  logging:
+    system: atlas_system
+    subsystem: atlas_subsystem
+    application: atlas_app
+    subapplication: atlas_sub_app
