@@ -1,0 +1,49 @@
+cors:
+allowedMethods: POST,GET,OPTIONS,DELETE
+allowedOrigins: '*'
+
+`enabled: **true**`
+
+`mapping: /**`
+
+`maxAge: 3600`
+
+`keyProviderType: JKS`
+
+`jksKeyManager:`
+
+`location: ${user.dir}/src/test/resources/keystore.jks`
+
+`password: password`
+
+`security:`
+
+`starter:`
+
+`auth:`
+
+`basic:`
+
+`users:`
+
+`filterEnabled: **false**`
+
+`logging:`
+
+`level:`
+
+`ROOT: INFO`
+
+`com:`
+
+`santander:`
+
+`serenity:`
+
+`security:`
+
+`keymanager: INFO`
+
+`org:`
+
+`springframework: INFO`
