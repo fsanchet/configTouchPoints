@@ -1,23 +1,36 @@
 cors:
   allowedMethods: POST,GET,OPTIONS,DELETE
   allowedOrigins: '*'
-  enabled: **true**
+  enabled: true
   mapping: /**
   maxAge: 3600
 
-keyProviderType: JKS
+keyProviderType: IN_MEMORY
 
-jksKeyManager:
-  location: ${user.dir}/src/test/resources/keystore.jks
-  password: password
-
+inMemoryKeyManager:
+  issuers:
+    - id: internal
+      issuerCredentialvalue: issuer_id
+      jku:
+        - https://jku_url_1.com/
+        - https://jku_url_2.com/
+      publicKeys:
+        - kid: kid_1
+          discovery: true
+          encodedKey: fdfdsfdsf323
+        - kid: kid_2
+          discovery: true
+          encodedKey: fds323ds
+          
 security:
   starter:
     auth:
       basic:
         users:
           filterEnabled: **false**
-
+userAuthentication:
+  mode: NONE
+  
 logging:
   level:
     ROOT: INFO
