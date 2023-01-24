@@ -91,16 +91,16 @@ routes:
             - PrefixPath=/api
             - AddRequestHeader=apiKey,touch1
 #management:
-#  health:
-#    probes:
-#      enabled: true
-#  server:
-#    port: 8079
-#  endpoint:
-#    gateway:
-#      enabled: true
-#  endpoints:
-#    web:
-#      exposure:
-#        enabled: true
-#        include: refresh,health,info,readinessstate,livenessstate,gateway
+  health:
+    probes:
+      enabled: true
+  server:
+    port: 8079
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        enabled: true
+        include: refresh,health,info,readinessstate,livenessstate,gateway
