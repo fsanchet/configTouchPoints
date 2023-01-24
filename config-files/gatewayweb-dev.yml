@@ -90,7 +90,7 @@ routes:
           filters:
             - PrefixPath=/api
             - AddRequestHeader=apiKey,touch1
-#management:
+management:
   health:
     probes:
       enabled: true
