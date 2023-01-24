@@ -1,0 +1,6 @@
+cors:
+  allowedMethods: POST,GET,OPTIONS,DELETE
+  allowedOrigins: '*'
+  enabled: true
+  mapping: /**
+  maxAge: 3600
