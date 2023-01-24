@@ -20,7 +20,7 @@ inMemoryKeyManager:
           encodedKey: fdfdsfdsf323
         - kid: kid_2
           discovery: true
-          encodedKey: fds323ds
+          encodedCert: fds323ds
           
 security:
   starter:
